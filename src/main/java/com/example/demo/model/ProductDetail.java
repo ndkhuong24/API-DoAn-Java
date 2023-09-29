@@ -24,4 +24,22 @@ public class ProductDetail {
 
     @Column(name = "size_id")
     private Integer size_id;
+
+    @Column(name = "color_id")
+    private Integer color_id;
+
+    @Column(name = "sole_id")
+    private Integer sole_id;
+
+    @Column(name = "material_id")
+    private Integer material_id;
+
+    @Column(name = "quantity")
+    private Integer quantity;
+
+    @Column(name = "price")
+    private Integer price;
+
+    @Column(name = "status")
+    private Integer status;
 }
