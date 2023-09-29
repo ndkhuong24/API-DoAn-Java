@@ -1,9 +1,13 @@
 package com.example.demo.service;
 
+import com.example.demo.model.Province;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
-import java.awt.print.Pageable;
+import java.util.List;
 
-public interface Provine {
-    Page<Provine>
+
+public interface ProvineService {
+    List<Province> getAll();
+    void add(List<Province> list);
 }
