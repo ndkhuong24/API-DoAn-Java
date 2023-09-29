@@ -1,2 +1,4 @@
-package com.example.demo.controller;public class ca {
+package com.example.demo.controller;
+
+public class ca {
 }

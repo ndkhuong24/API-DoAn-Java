@@ -1,2 +1,4 @@
-package com.example.demo.service;public class ddđ {
+package com.example.demo.service;
+
+public class ddđ {
 }
