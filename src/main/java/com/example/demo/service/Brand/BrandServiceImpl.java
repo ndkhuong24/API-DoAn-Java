@@ -8,9 +8,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
-public class BrandServiceImpl implements IBrandService{
+public class BrandServiceImpl implements IBrandService {
     @Autowired
     private IBrandRepository repository;
+
     @Override
     public Page<Brand> getAllPage(Pageable pageable) {
         return repository.findAll(pageable);
