@@ -8,6 +8,7 @@ import java.util.List;
 
 
 public interface ProvineService {
-    List<Province> getAll();
+    Page<Province> getAll(Pageable pageable);
     void add(List<Province> list);
+    void delete(Integer id);
 }
