@@ -1,30 +1,30 @@
-package com.example.demo.service.Size;
+package com.example.demo.service.Material;
 
+import com.example.demo.model.Material;
 import com.example.demo.model.Size;
-import com.example.demo.repository.ISizeRepository;
+import com.example.demo.repository.IMaterialRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
-public class SizeServiceImpl implements ISizeService{
+public class MaterialServiceImpl implements IMaterialService{
     @Autowired
-    private ISizeRepository repository;
-
+    private IMaterialRepository repository;
     @Override
-    public Page<Size> getAllPage(Pageable pageable) {
+    public Page<Material> getAllPage(Pageable pageable) {
         return repository.findAll(pageable);
     }
 
     @Override
-    public void add(Size size) {
-        repository.save(size);
+    public void add(Material material) {
+        repository.save(material);
     }
 
     @Override
-    public void update(Size size) {
-        repository.save(size);
+    public void update(Material material) {
+        repository.save(material);
     }
 
     @Override
@@ -33,7 +33,7 @@ public class SizeServiceImpl implements ISizeService{
     }
 
     @Override
-    public Size getSizeById(Integer id) {
+    public Material getMaterialById(Integer id) {
         return repository.getOne(id);
     }
 }

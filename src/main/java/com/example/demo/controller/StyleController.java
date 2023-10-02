@@ -1,7 +1,9 @@
 package com.example.demo.controller;
 
-import com.example.demo.model.Brand;
-import com.example.demo.service.Brand.IBrandService;
+import com.example.demo.model.Size;
+import com.example.demo.model.Style;
+import com.example.demo.service.Size.ISizeService;
+import com.example.demo.service.Style.IStyleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -13,35 +15,34 @@ import java.util.List;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/api/brand")
-public class BrandController {
+@RequestMapping("/api/style")
+public class StyleController {
     @Autowired
-    private IBrandService service;
-    Page<Brand> brandPage;
+    private IStyleService service;
+    Page<Style> sizePage;
     @GetMapping
-    public ResponseEntity<List<Brand>> getAllPage(@RequestParam(defaultValue = "1")int page){
+    public ResponseEntity<List<Style>> getAllPage(@RequestParam(defaultValue = "1")int page){
         if (page < 1) page = 1;
         int pageNumber = page - 1;
         int pageSize = 5;
         Pageable pageable = PageRequest.of(pageNumber, pageSize);
-        brandPage = service.getAllPage(pageable);
-        return ResponseEntity.ok(brandPage.getContent());
+        sizePage = service.getAllPage(pageable);
+        return ResponseEntity.ok(sizePage.getContent());
 
     }
     @PostMapping
-    public ResponseEntity<Brand> postBrand(@RequestBody Brand brand){
-        service.add(brand);
-        return ResponseEntity.ok(brand);
+    public ResponseEntity<Style> postSize(@RequestBody Style style){
+        service.add(style);
+        return ResponseEntity.ok(style);
     }
     @PutMapping
-    public ResponseEntity<Brand> putBrand(@RequestBody Brand brand) {
-        service.update(brand);
-        return ResponseEntity.ok(brand);
+    public ResponseEntity<Style> putBrand(@RequestBody Style style) {
+        service.update(style);
+        return ResponseEntity.ok(style);
     }
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteBrand(@PathVariable Integer id){
         service.delete(id);
         return ResponseEntity.ok().build();
     }
-
 }

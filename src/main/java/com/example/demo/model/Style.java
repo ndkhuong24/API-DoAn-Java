@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "material")
+@Table(name = "style")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

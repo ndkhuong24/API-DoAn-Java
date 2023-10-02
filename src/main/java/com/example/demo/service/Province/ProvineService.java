@@ -1,4 +1,4 @@
-package com.example.demo.service;
+package com.example.demo.service.Province;
 
 import com.example.demo.model.Province;
 import org.springframework.data.domain.Page;

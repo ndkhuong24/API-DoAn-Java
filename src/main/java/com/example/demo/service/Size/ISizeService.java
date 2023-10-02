@@ -10,5 +10,5 @@ public interface ISizeService {
     void add(Size size);
     void update(Size size);
     void delete(Integer id);
-    Size getBrandById(Integer id);
+    Size getSizeById(Integer id);
 }

@@ -1,8 +1,8 @@
 package com.example.demo.controller;
 
-import com.example.demo.model.Brand;
+import com.example.demo.model.Material;
 import com.example.demo.model.Size;
-import com.example.demo.service.Brand.IBrandService;
+import com.example.demo.service.Material.IMaterialService;
 import com.example.demo.service.Size.ISizeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -12,15 +12,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/api/size")
-public class SizeController {
+@RequestMapping("/api/material")
+public class MaterialController {
     @Autowired
-    private ISizeService service;
-    Page<Size> sizePage;
+    private IMaterialService service;
+    Page<Material> sizePage;
     @GetMapping
-    public ResponseEntity<List<Size>> getAllPage(@RequestParam(defaultValue = "1")int page){
+    public ResponseEntity<List<Material>> getAllPage(@RequestParam(defaultValue = "1")int page){
         if (page < 1) page = 1;
         int pageNumber = page - 1;
         int pageSize = 5;
@@ -30,14 +31,14 @@ public class SizeController {
 
     }
     @PostMapping
-    public ResponseEntity<Size> postSize(@RequestBody Size size){
-        service.add(size);
-        return ResponseEntity.ok(size);
+    public ResponseEntity<Material> postSize(@RequestBody Material material){
+        service.add(material);
+        return ResponseEntity.ok(material);
     }
     @PutMapping
-    public ResponseEntity<Size> putBrand(@RequestBody Size size) {
-        service.update(size);
-        return ResponseEntity.ok(size);
+    public ResponseEntity<Material> putBrand(@RequestBody Material material) {
+        service.update(material);
+        return ResponseEntity.ok(material);
     }
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteBrand(@PathVariable Integer id){
