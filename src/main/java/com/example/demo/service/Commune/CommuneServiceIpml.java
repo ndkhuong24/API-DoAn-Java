@@ -1,7 +1,7 @@
 package com.example.demo.service.Commune;
 
 import com.example.demo.model.Commune;
-import com.example.demo.repository.CommuneRepository;
+import com.example.demo.repository.ICommuneRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -12,7 +12,7 @@ import java.util.List;
 @Service
 public class CommuneServiceIpml implements CommuneService {
     @Autowired
-    private CommuneRepository repository;
+    private ICommuneRepository repository;
     @Override
     public Page<Commune> getAll(Pageable pageable) {
         return repository.findAll(pageable);

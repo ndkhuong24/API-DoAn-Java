@@ -1,7 +1,7 @@
 package com.example.demo.service.Province;
 
 import com.example.demo.model.Province;
-import com.example.demo.repository.ProvineRepository;
+import com.example.demo.repository.IProvineRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -12,7 +12,7 @@ import java.util.List;
 @Service
 public class ProvinceServiceImpl implements ProvineService {
     @Autowired
-    private ProvineRepository repository;
+    private IProvineRepository repository;
 
     @Override
     public Page<Province> getAll(Pageable pageable) {

@@ -1,7 +1,6 @@
 package com.example.demo.service.Material;
 
 import com.example.demo.model.Material;
-import com.example.demo.model.Size;
 import com.example.demo.repository.IMaterialRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -9,7 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
-public class MaterialServiceImpl implements IMaterialService{
+public class MaterialServiceImpl implements MaterialService {
     @Autowired
     private IMaterialRepository repository;
     @Override
@@ -33,7 +32,7 @@ public class MaterialServiceImpl implements IMaterialService{
     }
 
     @Override
-    public Material getMaterialById(Integer id) {
+    public Material getById(Integer id) {
         return repository.getOne(id);
     }
 }

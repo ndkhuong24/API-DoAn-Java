@@ -1,7 +1,7 @@
 package com.example.demo.service.District;
 
 import com.example.demo.model.District;
-import com.example.demo.repository.DistrictRepository;
+import com.example.demo.repository.IDistrictRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -12,7 +12,7 @@ import java.util.List;
 @Service
 public class DistrictServiceImpl implements DistrictService {
     @Autowired
-    private DistrictRepository repository;
+    private IDistrictRepository repository;
 
     @Override
     public Page<District> getAll(Pageable pageable) {

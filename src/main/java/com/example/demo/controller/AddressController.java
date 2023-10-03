@@ -13,7 +13,7 @@ import java.util.List;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/api/address")
+@RequestMapping("/api/Address")
 public class AddressController {
     @Autowired
     private AddressService service;
@@ -21,21 +21,23 @@ public class AddressController {
     private Page<Address> PageAddress;
 
     @GetMapping
-    public ResponseEntity<List<Address>> getAll(@RequestParam(defaultValue = "1")int page){
-        if(page<1) page=1;
-        int pageNum = page-1;
+    public ResponseEntity<List<Address>> getAll(@RequestParam(defaultValue = "1") int page) {
+        if (page < 1) page = 1;
+        int pageNum = page - 1;
         int pageSize = 5;
-        Pageable pageable = PageRequest.of(pageNum,pageSize);
+        Pageable pageable = PageRequest.of(pageNum, pageSize);
         PageAddress = service.getAll(pageable);
         return ResponseEntity.ok(PageAddress.getContent());
     }
+
     @PostMapping
-    public ResponseEntity<List<Address>> add(@RequestBody List<Address> list){
+    public ResponseEntity<List<Address>> add(@RequestBody List<Address> list) {
         service.add(list);
         return ResponseEntity.ok(list);
     }
+
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> delete(@PathVariable Integer id){
+    public ResponseEntity<?> delete(@PathVariable Integer id) {
         service.delete(id);
         return ResponseEntity.ok().build();
     }

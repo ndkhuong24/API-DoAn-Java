@@ -1,30 +1,30 @@
-package com.example.demo.service.Size;
+package com.example.demo.service.Sole;
 
-import com.example.demo.model.Size;
-import com.example.demo.repository.ISizeRepository;
+import com.example.demo.model.Sole;
+import com.example.demo.repository.ISoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
-public class SizeServiceImpl implements SizeService {
+public class SoleServiceImpl implements SoleService {
     @Autowired
-    private ISizeRepository repository;
+    private ISoleRepository repository;
 
     @Override
-    public Page<Size> getAllPage(Pageable pageable) {
+    public Page<Sole> getAllPage(Pageable pageable) {
         return repository.findAll(pageable);
     }
 
     @Override
-    public void add(Size size) {
-        repository.save(size);
+    public void add(Sole sole) {
+        repository.save(sole);
     }
 
     @Override
-    public void update(Size size) {
-        repository.save(size);
+    public void update(Sole sole) {
+        repository.save(sole);
     }
 
     @Override
@@ -33,7 +33,7 @@ public class SizeServiceImpl implements SizeService {
     }
 
     @Override
-    public Size getById(Integer id) {
+    public Sole getById(Integer id) {
         return repository.getOne(id);
     }
 }

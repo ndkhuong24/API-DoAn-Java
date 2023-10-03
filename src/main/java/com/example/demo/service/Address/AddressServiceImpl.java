@@ -1,7 +1,7 @@
 package com.example.demo.service.Address;
 
 import com.example.demo.model.Address;
-import com.example.demo.repository.AddressRespository;
+import com.example.demo.repository.IAddressRespository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -11,7 +11,7 @@ import java.util.List;
 @Service
 public class AddressServiceImpl implements AddressService{
     @Autowired
-    private AddressRespository respository;
+    private IAddressRespository respository;
 
     @Override
     public Page<Address> getAll(Pageable pageable) {

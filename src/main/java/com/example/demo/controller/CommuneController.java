@@ -12,30 +12,32 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/commune")
+@RequestMapping("/api/Commune")
 @CrossOrigin("*")
 public class CommuneController {
     @Autowired
     private CommuneService service;
 
-    private Page<Commune> PageCommune;
+    private Page<Commune> communePage;
 
     @GetMapping
-    public ResponseEntity<List<Commune>> getAll(@RequestParam (defaultValue = "1")int page){
-        if(page<1) page=1;
-        int pageNum=page-1;
-        int pageSize =5;
-        Pageable pageable = PageRequest.of(pageNum,pageSize);
-        PageCommune=service.getAll(pageable);
-        return ResponseEntity.ok(PageCommune.getContent());
+    public ResponseEntity<List<Commune>> getAll(@RequestParam(defaultValue = "1") int page) {
+        if (page < 1) page = 1;
+        int pageNum = page - 1;
+        int pageSize = 5;
+        Pageable pageable = PageRequest.of(pageNum, pageSize);
+        communePage = service.getAll(pageable);
+        return ResponseEntity.ok(communePage.getContent());
     }
+
     @PostMapping
-    public ResponseEntity<List<Commune>> add(@RequestBody List<Commune> list){
+    public ResponseEntity<List<Commune>> add(@RequestBody List<Commune> list) {
         service.add(list);
         return ResponseEntity.ok(list);
     }
+
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> delete(@PathVariable Integer id){
+    public ResponseEntity<?> delete(@PathVariable Integer id) {
         service.delete(id);
         return ResponseEntity.ok().build();
     }
