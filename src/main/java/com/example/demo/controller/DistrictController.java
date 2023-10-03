@@ -21,7 +21,7 @@ public class DistrictController {
     private Page<District> districtPage;
 
     @GetMapping
-    public ResponseEntity<List<District>> getAll(@RequestParam(defaultValue = "1") int page) {
+    public ResponseEntity<List<District>> getAllPage(@RequestParam(defaultValue = "1") int page) {
         if (page < 1) page = 1;
         int pageNumber = page - 1;
         int pageSize = 5;

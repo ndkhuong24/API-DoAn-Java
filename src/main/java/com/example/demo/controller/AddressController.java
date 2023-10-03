@@ -21,7 +21,7 @@ public class AddressController {
     private Page<Address> PageAddress;
 
     @GetMapping
-    public ResponseEntity<List<Address>> getAll(@RequestParam(defaultValue = "1") int page) {
+    public ResponseEntity<List<Address>> getAllPage(@RequestParam(defaultValue = "1") int page) {
         if (page < 1) page = 1;
         int pageNum = page - 1;
         int pageSize = 5;

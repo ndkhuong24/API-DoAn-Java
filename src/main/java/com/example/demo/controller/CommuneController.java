@@ -21,7 +21,7 @@ public class CommuneController {
     private Page<Commune> communePage;
 
     @GetMapping
-    public ResponseEntity<List<Commune>> getAll(@RequestParam(defaultValue = "1") int page) {
+    public ResponseEntity<List<Commune>> getAllPage(@RequestParam(defaultValue = "1") int page) {
         if (page < 1) page = 1;
         int pageNum = page - 1;
         int pageSize = 5;
