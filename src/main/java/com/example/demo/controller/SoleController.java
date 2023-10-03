@@ -27,7 +27,6 @@ public class SoleController {
         Pageable pageable = PageRequest.of(pageNumber, pageSize);
         solePage = service.getAllPage(pageable);
         return ResponseEntity.ok(solePage.getContent());
-
     }
 
     @PostMapping
