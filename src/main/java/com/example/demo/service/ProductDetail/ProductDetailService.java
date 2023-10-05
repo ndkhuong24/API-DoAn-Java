@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface ProductDetailService {
     List<ProductDetail> getAll();
+
+    ProductDetail getById(Integer id);
 }
