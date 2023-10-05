@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -34,8 +34,9 @@ public class Users {
     @Column(name = "password")
     private String password;
 
-    @Column(name = "role_id")
-    private Integer role_id;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "role_id")
+    private Roles role_id;
 
     @Column(name = "status")
     private Integer stats;
