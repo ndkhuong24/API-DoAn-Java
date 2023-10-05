@@ -13,9 +13,10 @@ import java.util.List;
 public class CommuneServiceIpml implements CommuneService {
     @Autowired
     private ICommuneRepository repository;
+
     @Override
-    public Page<Commune> getAll(Pageable pageable) {
-        return repository.findAll(pageable);
+    public List<Commune> getAll() {
+        return repository.findAll();
     }
 
     @Override

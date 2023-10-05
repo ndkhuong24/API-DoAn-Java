@@ -18,24 +18,22 @@ public class ProvinceController {
     @Autowired
     private ProvineService service;
 
-    private Page<Province> provincePage ;
+    private List<Province> provinceList;
 
     @GetMapping
-    public ResponseEntity<List<Province>> getAllPage(@RequestParam(defaultValue = "1") int page){
-        if(page<1) page=1;
-       int pageNumber = page -1;
-        int pageSize =5;
-        Pageable pageable = PageRequest.of(pageNumber,pageSize);
-        provincePage = service.getAll(pageable);
-        return ResponseEntity.ok(provincePage.getContent());
+    public ResponseEntity<List<Province>> getAllPage() {
+        provinceList = service.getAll();
+        return ResponseEntity.ok(provinceList);
     }
+
     @PostMapping
-    public ResponseEntity<List<Province>> postProvince(@RequestBody List<Province> list){
+    public ResponseEntity<List<Province>> postProvince(@RequestBody List<Province> list) {
         service.add(list);
         return ResponseEntity.ok(list);
     }
+
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteProvince(@PathVariable Integer id){
+    public ResponseEntity<?> deleteProvince(@PathVariable Integer id) {
         service.delete(id);
         return ResponseEntity.ok().build();
     }

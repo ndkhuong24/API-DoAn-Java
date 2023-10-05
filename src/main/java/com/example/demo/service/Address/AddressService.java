@@ -7,7 +7,9 @@ import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 public interface AddressService {
-    Page<Address> getAll(Pageable pageable);
+    List<Address> getAll();
+
     void add(List<Address> list);
+
     void delete(Integer id);
 }

@@ -18,16 +18,12 @@ public class CommuneController {
     @Autowired
     private CommuneService service;
 
-    private Page<Commune> communePage;
+    private List<Commune> communeList;
 
     @GetMapping
-    public ResponseEntity<List<Commune>> getAllPage(@RequestParam(defaultValue = "1") int page) {
-        if (page < 1) page = 1;
-        int pageNum = page - 1;
-        int pageSize = 5;
-        Pageable pageable = PageRequest.of(pageNum, pageSize);
-        communePage = service.getAll(pageable);
-        return ResponseEntity.ok(communePage.getContent());
+    public ResponseEntity<List<Commune>> getAllPage() {
+        communeList = service.getAll();
+        return ResponseEntity.ok(communeList);
     }
 
     @PostMapping

@@ -8,14 +8,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
-public class AddressServiceImpl implements AddressService{
+public class AddressServiceImpl implements AddressService {
     @Autowired
     private IAddressRespository respository;
 
     @Override
-    public Page<Address> getAll(Pageable pageable) {
-        return respository.findAll(pageable);
+    public List<Address> getAll() {
+        return respository.findAll();
     }
 
     @Override

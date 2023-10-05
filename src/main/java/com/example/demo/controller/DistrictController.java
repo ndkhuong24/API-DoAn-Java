@@ -18,16 +18,12 @@ public class DistrictController {
     @Autowired
     private DistrictService service;
 
-    private Page<District> districtPage;
+    private List<District> districtList;
 
     @GetMapping
-    public ResponseEntity<List<District>> getAllPage(@RequestParam(defaultValue = "1") int page) {
-        if (page < 1) page = 1;
-        int pageNumber = page - 1;
-        int pageSize = 5;
-        Pageable pageable = PageRequest.of(pageNumber, pageSize);
-        districtPage = service.getAll(pageable);
-        return ResponseEntity.ok(districtPage.getContent());
+    public ResponseEntity<List<District>> getAllPage() {
+        districtList = service.getAll();
+        return ResponseEntity.ok(districtList);
     }
 
     @PostMapping

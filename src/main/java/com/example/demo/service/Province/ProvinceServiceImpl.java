@@ -15,8 +15,8 @@ public class ProvinceServiceImpl implements ProvineService {
     private IProvineRepository repository;
 
     @Override
-    public Page<Province> getAll(Pageable pageable) {
-        return repository.findAll(pageable);
+    public List<Province> getAll() {
+        return repository.findAll();
     }
 
     @Override

@@ -15,8 +15,8 @@ public class DistrictServiceImpl implements DistrictService {
     private IDistrictRepository repository;
 
     @Override
-    public Page<District> getAll(Pageable pageable) {
-        return repository.findAll(pageable);
+    public List<District> getAll() {
+        return repository.findAll();
     }
 
     @Override

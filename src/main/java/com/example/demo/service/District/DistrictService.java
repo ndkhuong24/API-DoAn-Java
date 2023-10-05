@@ -7,7 +7,9 @@ import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 public interface DistrictService {
-    Page<District> getAll(Pageable pageable);
+    List<District> getAll();
+
     void add(List<District> list);
+
     void delete(Integer id);
 }
