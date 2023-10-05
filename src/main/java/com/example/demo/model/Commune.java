@@ -1,6 +1,7 @@
 package com.example.demo.model;
 
 import javax.persistence.*;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,6 +19,9 @@ public class Commune {
 
     @Column(name = "name")
     private String name;
+
+    @Column(name = "commune_code")
+    private Integer commune_code;
 
     @Column(name = "district_id")
     private Integer district_id;

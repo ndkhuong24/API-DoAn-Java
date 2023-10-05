@@ -19,6 +19,9 @@ public class District {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "district_code")
+    private Integer district_code;
+
     @Column(name = "province_id")
     private Integer province_id;
 }
