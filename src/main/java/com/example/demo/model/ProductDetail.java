@@ -19,6 +19,9 @@ public class ProductDetail {
     @Column(name = "category_id")
     private Integer category_id;
 
+    @Column(name = "brand_id")
+    private Integer brand_id;
+
     @Column(name = "product_id")
     private Integer product_id;
 
