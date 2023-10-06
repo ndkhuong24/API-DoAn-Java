@@ -1,7 +1,7 @@
 package com.example.demo.controller;
 
-import com.example.demo.model.Order;
-import com.example.demo.service.Order.OrderService;
+import com.example.demo.model.Orders;
+import com.example.demo.service.Orders.OrdersService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -13,27 +13,27 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/Order")
+@RequestMapping("/api/Orders")
 @CrossOrigin("*")
-public class OrderController {
+public class OrdersController {
     @Autowired
-    private OrderService service;
+    private OrdersService service;
 
-    private Page<Order> OrderPage;
+    private Page<Orders> ordersPage;
 
     @GetMapping
-    public ResponseEntity<List<Order>> getAll(@RequestParam(defaultValue = "1")int page){
+    public ResponseEntity<List<Orders>> getAll(@RequestParam(defaultValue = "1")int page){
         if(page<1) page=1;
         int pageNum = page-1;
         int pageSize = 5;
         Pageable pageable = PageRequest.of(pageNum,pageSize);
-        OrderPage=service.getAll(pageable);
-        return ResponseEntity.ok(OrderPage.getContent());
+        ordersPage=service.getAll(pageable);
+        return ResponseEntity.ok(ordersPage.getContent());
     }
     @PostMapping
-    public  ResponseEntity<Order> add(@RequestBody Order order){
-        service.add(order);
-        return ResponseEntity.ok(order);
+    public  ResponseEntity<Orders> add(@RequestBody Orders orders){
+        service.add(orders);
+        return ResponseEntity.ok(orders);
     }
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") Integer id){

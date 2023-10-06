@@ -1,22 +1,20 @@
-package com.example.demo.service.Order;
+package com.example.demo.service.Orders;
 
-import com.example.demo.model.Order;
-import com.example.demo.repository.IOrderRepository;
+import com.example.demo.model.Orders;
+import com.example.demo.repository.IOrdersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
-public class OrderServiceImpl implements OrderService{
+public class OrdersServiceImpl implements OrdersService {
     @Autowired
-    private IOrderRepository repository;
+    private IOrdersRepository repository;
 
     @Override
-    public void add(Order order) {
-        repository.save(order);
+    public void add(Orders orders) {
+        repository.save(orders);
     }
 
     @Override
@@ -25,7 +23,7 @@ public class OrderServiceImpl implements OrderService{
     }
 
     @Override
-    public Page<Order> getAll(Pageable pageable) {
+    public Page<Orders> getAll(Pageable pageable) {
         return repository.findAll(pageable);
     }
 }

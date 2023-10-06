@@ -12,7 +12,7 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Order {
+public class Orders {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -35,5 +35,4 @@ public class Order {
     private Integer discount_price;
     @Column(name = "final_price")
     private Integer final_price;
-
 }
