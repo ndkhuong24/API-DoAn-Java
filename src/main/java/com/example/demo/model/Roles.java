@@ -1,9 +1,13 @@
 package com.example.demo.model;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Entity
 @Table(name = "roles")
@@ -18,6 +22,10 @@ public class Roles {
 
     @Column(name = "name")
     private String name;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "role")
+    List<Authority> authorities;
 
     public Roles(Integer id) {
         this.id = id;

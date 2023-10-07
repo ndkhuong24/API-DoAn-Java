@@ -46,4 +46,14 @@ public class UserController {
         userService.delete(id);
         return ResponseEntity.ok().build();
     }
+    @GetMapping("/{username}")
+    public ResponseEntity<Users> getUserByUsername(@PathVariable String username) {
+        Users user = userService.getByUsername(username);
+
+        if (user != null) {
+            return ResponseEntity.ok(user); // Trả về người dùng nếu tìm thấy
+        } else {
+            return ResponseEntity.notFound().build(); // Trả về 404 Not Found nếu không tìm thấy
+        }
+    }
 }
