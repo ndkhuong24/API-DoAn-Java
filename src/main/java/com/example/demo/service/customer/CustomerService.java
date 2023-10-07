@@ -6,8 +6,8 @@ import org.springframework.data.domain.Pageable;
 
 public interface CustomerService {
     Page<Customer> getAllPage(Pageable pageable);
-    void add(Customer sole);
-    void update(Customer sole);
+    void add(Customer customer);
+    void update(Customer customer);
     void delete(Integer id);
     Customer getById(Integer id);
 }

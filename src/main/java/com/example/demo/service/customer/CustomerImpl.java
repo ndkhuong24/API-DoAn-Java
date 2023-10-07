@@ -18,13 +18,13 @@ public class CustomerImpl implements CustomerService {
     }
 
     @Override
-    public void add(Customer sole) {
-        customerRepository.save(sole);
+    public void add(Customer customer) {
+        customerRepository.save(customer);
     }
 
     @Override
-    public void update(Customer sole) {
-        customerRepository.save(sole);
+    public void update(Customer customer) {
+        customerRepository.save(customer);
     }
 
     @Override

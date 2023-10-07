@@ -1,4 +1,5 @@
 package com.example.demo.service.user;
+import com.example.demo.model.Roles;
 import com.example.demo.model.Users;
 import com.example.demo.repository.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,13 +18,14 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public void add(Users sole) {
-        userRepository.save(sole);
+    public void add(Users user) {
+        user.setRole_id(new Roles(user.getRole_id().getId()));
+        userRepository.save(user);
     }
 
     @Override
-    public void update(Users sole) {
-        userRepository.save(sole);
+    public void update(Users user) {
+        userRepository.save(user);
     }
 
     @Override
@@ -32,7 +34,7 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public Users getById(Integer id) {
+    public Users getById(int id) {
         return userRepository.getOne(id);
     }
 }
