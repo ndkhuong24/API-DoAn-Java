@@ -1,6 +1,6 @@
 package com.example.demo;
+
 import com.example.demo.model.Customer;
-import com.example.demo.model.Roles;
 import com.example.demo.model.Users;
 import com.example.demo.service.customer.CustomerService;
 import com.example.demo.service.user.UserService;
@@ -13,15 +13,11 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
-import java.util.NoSuchElementException;
-import java.util.Set;
 
 @Configuration
 @EnableWebSecurity
