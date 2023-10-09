@@ -45,7 +45,4 @@ public class Users {
     @Column(name = "status")
     private Integer stats;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
-    List<Authority> authorities;
 }

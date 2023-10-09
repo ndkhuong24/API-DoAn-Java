@@ -9,8 +9,6 @@ import java.util.List;
 
 @Repository
 public interface IUserRepository extends JpaRepository<Users,Integer> {
-    @Query("SELECT DISTINCT ar.user.username FROM Authority ar WHERE ar.role.name IN ('admin', 'user')")
-    List<Users> getAdministrators();
 
     Users getUsersByUsername(String username);
 }

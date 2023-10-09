@@ -23,10 +23,6 @@ public class Roles {
     @Column(name = "name")
     private String name;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "role")
-    List<Authority> authorities;
-
     public Roles(Integer id) {
         this.id = id;
     }

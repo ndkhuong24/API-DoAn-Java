@@ -36,4 +36,10 @@ public class CustomerImpl implements CustomerService {
     public Customer getById(Integer id) {
         return customerRepository.getOne(id);
     }
+
+    @Override
+    public Customer getByUsername(String username) {
+
+        return customerRepository.getCustomerByUsername(username);
+    }
 }

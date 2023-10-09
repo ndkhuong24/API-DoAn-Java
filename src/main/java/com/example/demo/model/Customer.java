@@ -39,6 +39,10 @@ public class Customer {
 
     @Column(name = "status")
     private Integer status;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "role_id")
+    private Roles role_id;
 }
 
 

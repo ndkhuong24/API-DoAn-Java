@@ -10,4 +10,5 @@ public interface CustomerService {
     void update(Customer customer);
     void delete(Integer id);
     Customer getById(Integer id);
+    Customer getByUsername(String username);
 }
