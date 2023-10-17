@@ -21,7 +21,6 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public void add(Users user) {
-        user.setRole_id(new Roles(user.getRole_id().getId()));
         userRepository.save(user);
     }
 
@@ -40,9 +39,6 @@ public class UserServiceImpl implements UserService{
         return userRepository.getOne(id);
     }
 
-    @Override
-    public Users getByUsername(String username) {
-        return userRepository.getUsersByUsername(username);
-    }
+
 
 }
