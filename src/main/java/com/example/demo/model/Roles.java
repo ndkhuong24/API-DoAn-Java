@@ -2,6 +2,7 @@ package com.example.demo.model;
 
 import javax.persistence.*;
 
+import com.example.demo.dto.ERole;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,8 +21,9 @@ public class Roles {
     @Column(name = "id")
     private Integer id;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "name")
-    private String name;
+    private ERole name;
 
     public Roles(Integer id) {
         this.id = id;

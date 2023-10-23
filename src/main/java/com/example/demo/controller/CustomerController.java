@@ -1,7 +1,5 @@
 package com.example.demo.controller;
 
-import com.example.demo.JwtAuthencationFilter;
-import com.example.demo.JwtUtils;
 import com.example.demo.model.Customer;
 import com.example.demo.service.customer.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,30 +21,16 @@ public class CustomerController {
     private CustomerService customerService;
     Page<Customer> CustomerPage;
 
-    @Autowired
-    private JwtUtils jwtUtils;
 
-    @Autowired
-    private JwtAuthencationFilter jwtAuthencationFilter;
 
     @GetMapping
     public ResponseEntity<List<Customer>> getAllPage(@RequestParam(defaultValue = "1") int page, HttpServletRequest request) {
-        String token=jwtAuthencationFilter.extractTokenFromRequest(request);
-        if(token!=null){
-            String username=jwtUtils.extractUserName(token);
-            if(username!=null){
         if (page < 1) page = 1;
         int pageNumber = page - 1;
         int pageSize = 5;
         Pageable pageable = PageRequest.of(pageNumber, pageSize);
         CustomerPage = customerService.getAllPage(pageable);
         return ResponseEntity.ok(CustomerPage.getContent());
-            }else{
-                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-            }
-        }else{
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-        }
     }
 
     @PostMapping

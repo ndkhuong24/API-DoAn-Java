@@ -1,7 +1,5 @@
 package com.example.demo.controller;
 
-import com.example.demo.JwtAuthencationFilter;
-import com.example.demo.JwtUtils;
 import com.example.demo.model.Users;
 import com.example.demo.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +8,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,30 +22,18 @@ public class UserController {
     private UserService userService;
     Page<Users> userPage;
 
-    @Autowired
-    private JwtUtils jwtUtils;
-
-    @Autowired
-    private JwtAuthencationFilter jwtAuthencationFilter;
 
     @GetMapping
+    @PreAuthorize("hasRole('ADMIN') or hasAnyRole('MANAGER')")
     public ResponseEntity<List<Users>> getAllPage(@RequestParam(defaultValue = "1") int page, HttpServletRequest request) {
-//        String token=jwtAuthencationFilter.extractTokenFromRequest(request);
-//        if(token!=null){
-//            String username=jwtUtils.extractUserName(token);
-//            if(username!=null){
+
                 if (page < 1) page = 1;
                 int pageNumber = page - 1;
                 int pageSize = 5;
                 Pageable pageable = PageRequest.of(pageNumber, pageSize);
                 userPage = userService.getAllPage(pageable);
                 return ResponseEntity.ok(userPage.getContent());
-//            }else{
-//                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-//            }
-//        }else{
-//            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-//        }
+
     }
 
     @PostMapping
@@ -65,6 +52,11 @@ public class UserController {
     public ResponseEntity<?> deleteUsers(@PathVariable Integer id) {
         userService.delete(id);
         return ResponseEntity.ok().build();
+    }
+    @GetMapping("/admin")
+    @PreAuthorize("hasRole('ADMIN')")
+    public String adminAccess() {
+        return "Admin Board.";
     }
 
 }
