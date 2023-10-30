@@ -6,6 +6,6 @@ import org.springframework.data.domain.Pageable;
 
 public interface CartDetailService {
     Page<CartDetail> getALL(Pageable pageable);
-    void add(CartDetail cartDetail);
+    CartDetail add(CartDetail cartDetail);
     void delete(Integer id);
 }
