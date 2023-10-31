@@ -13,4 +13,5 @@ public interface SizeService {
     void delete(Integer id);
     Size getById(Integer id);
     List<Size>getAll();
+    List<Size> findByName(String name);
 }

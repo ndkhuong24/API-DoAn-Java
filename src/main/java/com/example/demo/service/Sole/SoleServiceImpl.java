@@ -40,6 +40,11 @@ public class SoleServiceImpl implements SoleService {
     }
 
     @Override
+    public List<Sole> findByName(String name) {
+        return repository.findByName(name);
+    }
+
+    @Override
     public List<Sole> getAll() {
         return repository.findAll();
     }

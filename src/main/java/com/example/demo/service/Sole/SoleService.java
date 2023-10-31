@@ -13,6 +13,6 @@ public interface SoleService {
     void update(Sole sole);
     void delete(Integer id);
     Sole getById(Integer id);
-
+    List<Sole> findByName(String name);
     List<Sole> getAll();
 }

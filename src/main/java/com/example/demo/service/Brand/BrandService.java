@@ -13,4 +13,5 @@ public interface BrandService {
     void delete(Integer id);
     Brand getById(Integer id);
     List<Brand> getAll();
+    List<Brand> findByName(String name);
 }

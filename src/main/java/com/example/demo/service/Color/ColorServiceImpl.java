@@ -38,4 +38,9 @@ public class ColorServiceImpl implements ColorService {
     public List<Color> getAll() {
         return repository.findAll();
     }
+
+    @Override
+    public List<Color> findByName(String name) {
+        return repository.findByName(name);
+    }
 }

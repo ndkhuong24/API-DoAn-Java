@@ -19,4 +19,6 @@ public interface MaterialService {
     Material getById(Integer id);
 
     List<Material> getAll();
+
+    List<Material>findByName(String name);
 }

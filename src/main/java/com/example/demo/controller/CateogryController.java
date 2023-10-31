@@ -50,4 +50,9 @@ public class CateogryController {
         service.delete(id);
         return ResponseEntity.ok().build();
     }
+    @GetMapping("/{id}")
+    public ResponseEntity<List<Category>> getCategory(@PathVariable String id){
+        List<Category> category=service.findById(id);
+        return ResponseEntity.ok(category);
+    }
 }

@@ -21,6 +21,11 @@ public class SoleController {
     private SoleService service;
     Page<Sole> solePage;
 
+    @GetMapping("/{name}")
+    public ResponseEntity<List<Sole>> searchByName(@PathVariable String name){
+        return ResponseEntity.ok(service.findByName(name));
+    }
+
     @GetMapping("/getAll")
     public ResponseEntity<List<Sole>> getAllSole(){
         return ResponseEntity.ok(service.getAll());

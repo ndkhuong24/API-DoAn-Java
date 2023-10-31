@@ -43,4 +43,9 @@ public class BrandServiceImpl implements BrandService {
     public List<Brand> getAll() {
         return repository.findAll();
     }
+
+    @Override
+    public List<Brand> findByName(String name) {
+        return repository.findByName(name);
+    }
 }
