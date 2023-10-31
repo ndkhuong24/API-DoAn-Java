@@ -7,6 +7,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class SizeServiceImpl implements SizeService {
     @Autowired
@@ -35,5 +37,10 @@ public class SizeServiceImpl implements SizeService {
     @Override
     public Size getById(Integer id) {
         return repository.getOne(id);
+    }
+
+    @Override
+    public List<Size> getAll() {
+        return repository.findAll();
     }
 }

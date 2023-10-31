@@ -7,6 +7,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class SoleServiceImpl implements SoleService {
     @Autowired
@@ -35,5 +37,10 @@ public class SoleServiceImpl implements SoleService {
     @Override
     public Sole getById(Integer id) {
         return repository.getOne(id);
+    }
+
+    @Override
+    public List<Sole> getAll() {
+        return repository.findAll();
     }
 }

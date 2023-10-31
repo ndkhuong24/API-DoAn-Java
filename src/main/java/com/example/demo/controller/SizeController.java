@@ -19,6 +19,11 @@ public class SizeController {
     private SizeService service;
     Page<Size> sizePage;
 
+    @GetMapping("/getAll")
+    public ResponseEntity<List<Size>> getAllSize(){
+        return ResponseEntity.ok(service.getAll());
+    }
+
     @GetMapping
     public ResponseEntity<List<Size>> getAllPage(@RequestParam(defaultValue = "1") int page) {
         if (page < 1) page = 1;

@@ -7,6 +7,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class MaterialServiceImpl implements MaterialService {
     @Autowired
@@ -34,5 +36,10 @@ public class MaterialServiceImpl implements MaterialService {
     @Override
     public Material getById(Integer id) {
         return repository.getOne(id);
+    }
+
+    @Override
+    public List<Material> getAll() {
+        return repository.findAll();
     }
 }

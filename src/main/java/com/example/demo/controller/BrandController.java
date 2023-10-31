@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.Brand;
+import com.example.demo.model.Color;
 import com.example.demo.service.Brand.BrandService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -18,6 +19,11 @@ public class BrandController {
     @Autowired
     private BrandService service;
     Page<Brand> brandPage;
+
+    @GetMapping("/getAll")
+    public ResponseEntity<List<Brand>>getAllBrand(){
+        return ResponseEntity.ok(service.getAll());
+    }
 
     @GetMapping
     public ResponseEntity<List<Brand>> getAllPage(@RequestParam(defaultValue = "1") int page) {

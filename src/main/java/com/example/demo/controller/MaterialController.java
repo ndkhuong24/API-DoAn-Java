@@ -1,6 +1,8 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.Material;
+import com.example.demo.model.Size;
+import com.example.demo.model.Sole;
 import com.example.demo.service.Material.MaterialService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -19,6 +21,10 @@ public class MaterialController {
     private MaterialService service;
     Page<Material> materialPage;
 
+    @GetMapping("/getAll")
+    public ResponseEntity<List<Material>> getAllMaterial(){
+        return ResponseEntity.ok(service.getAll());
+    }
     @GetMapping
     public ResponseEntity<List<Material>> getAllPage(@RequestParam(defaultValue = "1") int page) {
         if (page < 1) page = 1;
