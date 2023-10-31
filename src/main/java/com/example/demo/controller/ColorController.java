@@ -1,6 +1,5 @@
 package com.example.demo.controller;
 
-import com.example.demo.model.Category;
 import com.example.demo.model.Color;
 import com.example.demo.service.Color.ColorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +19,11 @@ public class ColorController {
     private ColorService service;
 
     Page<Color> colorPage;
+
+    @GetMapping("/getAll")
+    public ResponseEntity<List<Color>> getAllColor(){
+        return ResponseEntity.ok(service.getAll());
+    }
 
     @GetMapping
     public ResponseEntity<List<Color>> getAllPage(@RequestParam(defaultValue = "1") int page) {

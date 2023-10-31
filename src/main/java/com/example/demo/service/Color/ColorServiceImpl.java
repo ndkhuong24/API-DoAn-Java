@@ -7,6 +7,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ColorServiceImpl implements ColorService {
     @Autowired
@@ -30,5 +32,10 @@ public class ColorServiceImpl implements ColorService {
     @Override
     public void delete(Integer id) {
         repository.deleteById(id);
+    }
+
+    @Override
+    public List<Color> getAll() {
+        return repository.findAll();
     }
 }
