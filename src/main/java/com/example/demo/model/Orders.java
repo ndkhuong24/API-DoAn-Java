@@ -17,8 +17,6 @@ public class Orders {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
-    @Column(name = "customer_id")
-    private Integer customer_id;
     @Column(name = "user_id")
     private Integer user_id;
     @Column(name = "date_create")
@@ -35,4 +33,10 @@ public class Orders {
     private Integer discount_price;
     @Column(name = "final_price")
     private Integer final_price;
+    @Column(name = "status")
+    private Integer status;
+
+    public Orders(Integer id) {
+        this.id = id;
+    }
 }
