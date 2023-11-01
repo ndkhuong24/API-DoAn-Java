@@ -52,7 +52,7 @@ public class CateogryController {
     }
     @GetMapping("/{id}")
     public ResponseEntity<List<Category>> getCategory(@PathVariable String id){
-        List<Category> category=service.findById(id);
+        List<Category> category=service.findByName(id);
         return ResponseEntity.ok(category);
     }
 }
