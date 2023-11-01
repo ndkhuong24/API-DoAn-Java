@@ -21,6 +21,11 @@ public class MaterialController {
     private MaterialService service;
     Page<Material> materialPage;
 
+    @GetMapping("/{name}")
+    public ResponseEntity<List<Material>>searchByName(@PathVariable String name){
+        return ResponseEntity.ok(service.findByName(name));
+    }
+
     @GetMapping("/getAll")
     public ResponseEntity<List<Material>> getAllMaterial(){
         return ResponseEntity.ok(service.getAll());
