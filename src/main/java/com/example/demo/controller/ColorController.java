@@ -21,13 +21,18 @@ public class ColorController {
     Page<Color> colorPage;
 
     @GetMapping("/{name}")
-    public ResponseEntity<List<Color>>serchByName(@PathVariable String name){
+    public ResponseEntity<List<Color>> serchByName(@PathVariable String name) {
         return ResponseEntity.ok(service.findByName(name));
     }
 
     @GetMapping("/getAll")
-    public ResponseEntity<List<Color>> getAllColor(){
+    public ResponseEntity<List<Color>> getAllColor() {
         return ResponseEntity.ok(service.getAll());
+    }
+
+    @GetMapping("/getAll/active")
+    public ResponseEntity<List<Color>> getAllColorActive() {
+        return ResponseEntity.ok(service.getAllColorActive());
     }
 
     @GetMapping

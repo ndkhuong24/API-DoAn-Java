@@ -47,4 +47,9 @@ public class MaterialServiceImpl implements MaterialService {
     public List<Material> findByName(String name) {
         return repository.findByName(name);
     }
+
+    @Override
+    public List<Material> getAllMaterialActive() {
+        return repository.getAllMaterialActive();
+    }
 }

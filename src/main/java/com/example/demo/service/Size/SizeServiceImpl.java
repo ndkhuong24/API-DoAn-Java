@@ -48,4 +48,9 @@ public class SizeServiceImpl implements SizeService {
     public List<Size> findByName(String name) {
         return repository.findByName(name);
     }
+
+    @Override
+    public List<Size> getAllSizeActive() {
+        return repository.getAllSizeActive();
+    }
 }

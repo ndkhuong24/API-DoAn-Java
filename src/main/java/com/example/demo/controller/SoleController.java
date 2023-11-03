@@ -1,7 +1,5 @@
 package com.example.demo.controller;
 
-import com.example.demo.model.Material;
-import com.example.demo.model.Size;
 import com.example.demo.model.Sole;
 import com.example.demo.service.Sole.SoleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,14 +20,20 @@ public class SoleController {
     Page<Sole> solePage;
 
     @GetMapping("/{name}")
-    public ResponseEntity<List<Sole>> searchByName(@PathVariable String name){
+    public ResponseEntity<List<Sole>> searchByName(@PathVariable String name) {
         return ResponseEntity.ok(service.findByName(name));
     }
 
     @GetMapping("/getAll")
-    public ResponseEntity<List<Sole>> getAllSole(){
+    public ResponseEntity<List<Sole>> getAllSole() {
         return ResponseEntity.ok(service.getAll());
     }
+
+    @GetMapping("/getAll/active")
+    public ResponseEntity<List<Sole>> getAllSoleActive() {
+        return ResponseEntity.ok(service.getAllSoleActive());
+    }
+
     @GetMapping
     public ResponseEntity<List<Sole>> getAllPage(@RequestParam(defaultValue = "1") int page) {
         if (page < 1) page = 1;

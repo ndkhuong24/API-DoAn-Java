@@ -20,13 +20,18 @@ public class SizeController {
     Page<Size> sizePage;
 
     @GetMapping("/{name}")
-    public ResponseEntity<List<Size>> search(@PathVariable String name){
+    public ResponseEntity<List<Size>> search(@PathVariable String name) {
         return ResponseEntity.ok(service.findByName(name));
     }
 
     @GetMapping("/getAll")
-    public ResponseEntity<List<Size>> getAllSize(){
+    public ResponseEntity<List<Size>> getAllSize() {
         return ResponseEntity.ok(service.getAll());
+    }
+
+    @GetMapping("/getAll/active")
+    public ResponseEntity<List<Size>> getAllSizeActive() {
+        return ResponseEntity.ok(service.getAllSizeActive());
     }
 
     @GetMapping

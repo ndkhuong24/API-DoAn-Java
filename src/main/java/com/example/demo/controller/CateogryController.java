@@ -20,9 +20,15 @@ public class CateogryController {
     Page<Category> categoryPage;
 
     @GetMapping("/getAll")
-    public ResponseEntity<List<Category>> getAllCategory(){
+    public ResponseEntity<List<Category>> getAllCategory() {
         return ResponseEntity.ok(service.getAllCategory());
     }
+
+    @GetMapping("/getAll/active")
+    public ResponseEntity<List<Category>> getAllActiveCategory() {
+        return ResponseEntity.ok(service.getAllActiveCategory());
+    }
+
     @GetMapping
     public ResponseEntity<List<Category>> getAllPage(@RequestParam(defaultValue = "1") int page) {
         if (page < 1) page = 1;
@@ -34,25 +40,26 @@ public class CateogryController {
     }
 
     @PostMapping
-    public ResponseEntity<Category> postCategory(@RequestBody Category category){
+    public ResponseEntity<Category> postCategory(@RequestBody Category category) {
         service.add(category);
         return ResponseEntity.ok(category);
     }
 
     @PutMapping
-    public ResponseEntity<Category> putCategory(@RequestBody Category category){
+    public ResponseEntity<Category> putCategory(@RequestBody Category category) {
         service.update(category);
         return ResponseEntity.ok(category);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteCategory(@PathVariable Integer id){
+    public ResponseEntity<?> deleteCategory(@PathVariable Integer id) {
         service.delete(id);
         return ResponseEntity.ok().build();
     }
+
     @GetMapping("/{id}")
-    public ResponseEntity<List<Category>> getCategory(@PathVariable String id){
-        List<Category> category=service.findByName(id);
+    public ResponseEntity<List<Category>> getCategory(@PathVariable String id) {
+        List<Category> category = service.findByName(id);
         return ResponseEntity.ok(category);
     }
 }

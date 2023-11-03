@@ -1,8 +1,6 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.Brand;
-import com.example.demo.model.Category;
-import com.example.demo.model.Color;
 import com.example.demo.service.Brand.BrandService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -22,8 +20,13 @@ public class BrandController {
     Page<Brand> brandPage;
 
     @GetMapping("/getAll")
-    public ResponseEntity<List<Brand>>getAllBrand(){
+    public ResponseEntity<List<Brand>> getAllBrand() {
         return ResponseEntity.ok(service.getAll());
+    }
+
+    @GetMapping("/getAll/active")
+    public ResponseEntity<List<Brand>> getAllBrandActive() {
+        return ResponseEntity.ok(service.getAllBrandActive());
     }
 
     @GetMapping
@@ -54,9 +57,10 @@ public class BrandController {
         service.delete(id);
         return ResponseEntity.ok().build();
     }
+
     @GetMapping("/{name}")
-    public ResponseEntity<List<Brand>> searchBrand(@PathVariable String name){
-        List<Brand> brand=service.findByName(name);
+    public ResponseEntity<List<Brand>> searchBrand(@PathVariable String name) {
+        List<Brand> brand = service.findByName(name);
         return ResponseEntity.ok(brand);
     }
 }

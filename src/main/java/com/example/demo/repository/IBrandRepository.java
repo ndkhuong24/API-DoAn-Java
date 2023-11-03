@@ -12,4 +12,7 @@ import java.util.List;
 public interface IBrandRepository extends JpaRepository<Brand, Integer> {
     @Query(value = "SELECT * FROM Brand WHERE name LIKE %?1%",nativeQuery = true)
     List<Brand> findByName(String name);
+
+    @Query(value = "SELECT * FROM Brand WHERE [status]=1",nativeQuery = true)
+    List<Brand> getAllBrandActive();
 }

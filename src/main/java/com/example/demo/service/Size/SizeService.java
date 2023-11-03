@@ -8,10 +8,18 @@ import java.util.List;
 
 public interface SizeService {
     Page<Size> getAllPage(Pageable pageable);
+
     void add(Size size);
+
     void update(Size size);
+
     void delete(Integer id);
+
     Size getById(Integer id);
-    List<Size>getAll();
+
+    List<Size> getAll();
+
     List<Size> findByName(String name);
+
+    List<Size> getAllSizeActive();
 }

@@ -1,8 +1,6 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.Material;
-import com.example.demo.model.Size;
-import com.example.demo.model.Sole;
 import com.example.demo.service.Material.MaterialService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -22,14 +20,20 @@ public class MaterialController {
     Page<Material> materialPage;
 
     @GetMapping("/{name}")
-    public ResponseEntity<List<Material>>searchByName(@PathVariable String name){
+    public ResponseEntity<List<Material>> searchByName(@PathVariable String name) {
         return ResponseEntity.ok(service.findByName(name));
     }
 
     @GetMapping("/getAll")
-    public ResponseEntity<List<Material>> getAllMaterial(){
+    public ResponseEntity<List<Material>> getAllMaterial() {
         return ResponseEntity.ok(service.getAll());
     }
+
+    @GetMapping("/getAll/active")
+    public ResponseEntity<List<Material>> getAllMaterialActive() {
+        return ResponseEntity.ok(service.getAllMaterialActive());
+    }
+
     @GetMapping
     public ResponseEntity<List<Material>> getAllPage(@RequestParam(defaultValue = "1") int page) {
         if (page < 1) page = 1;

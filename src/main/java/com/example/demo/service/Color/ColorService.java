@@ -16,5 +16,8 @@ public interface ColorService {
     void delete(Integer id);
 
     List<Color> getAll();
+
     List<Color> findByName(String name);
+
+    List<Color> getAllColorActive();
 }

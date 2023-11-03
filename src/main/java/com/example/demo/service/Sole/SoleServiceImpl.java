@@ -48,4 +48,9 @@ public class SoleServiceImpl implements SoleService {
     public List<Sole> getAll() {
         return repository.findAll();
     }
+
+    @Override
+    public List<Sole> getAllSoleActive() {
+        return repository.getAllSoleActive();
+    }
 }

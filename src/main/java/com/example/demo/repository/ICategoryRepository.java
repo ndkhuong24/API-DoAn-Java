@@ -11,4 +11,7 @@ import java.util.List;
 public interface ICategoryRepository extends JpaRepository<Category,Integer> {
     @Query(value = "SELECT * FROM Category WHERE name LIKE %?1%",nativeQuery = true)
     List<Category> findByName(String name);
+
+    @Query(value = "SELECT * FROM Category WHERE [status]=1",nativeQuery = true)
+    List<Category> getAllActiveCategory();
 }

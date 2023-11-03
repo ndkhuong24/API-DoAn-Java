@@ -8,10 +8,18 @@ import java.util.List;
 
 public interface BrandService {
     Page<Brand> getAllPage(Pageable pageable);
+
     void add(Brand brand);
+
     void update(Brand brand);
+
     void delete(Integer id);
+
     Brand getById(Integer id);
+
     List<Brand> getAll();
+
     List<Brand> findByName(String name);
+
+    List<Brand> getAllBrandActive();
 }

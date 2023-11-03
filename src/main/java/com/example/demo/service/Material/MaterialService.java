@@ -21,4 +21,6 @@ public interface MaterialService {
     List<Material> getAll();
 
     List<Material>findByName(String name);
+
+    List<Material> getAllMaterialActive();
 }
