@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.model.Image;
+import com.example.demo.model.ImageChinh;
 import com.example.demo.service.Image.ImageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -17,10 +17,20 @@ import java.util.List;
 public class ImageController {
     @Autowired
     private ImageService service;
-    Page<Image> imagePage;
+    Page<ImageChinh> imagePage;
+
+    @GetMapping("/getAll")
+    public ResponseEntity<List<ImageChinh>>getAll(){
+        return ResponseEntity.ok(service.getAll());
+    }
+
+    @GetMapping("/product_detail_id/{id}")
+    public ResponseEntity<ImageChinh>GetByProduct_id(@PathVariable Integer id){
+        return ResponseEntity.ok(service.getByProduct_detail_id(id));
+    }
 
     @GetMapping
-    public ResponseEntity<List<Image>> getAllPage(@RequestParam(defaultValue = "1") int page) {
+    public ResponseEntity<List<ImageChinh>> getAllPage(@RequestParam(defaultValue = "1") int page) {
         if (page < 1) page = 1;
         int pageNumber = page - 1;
         int pageSize = 5;
@@ -30,15 +40,15 @@ public class ImageController {
     }
 
     @PostMapping
-    public ResponseEntity<Image> postImage(@RequestBody Image image) {
-        service.add(image);
-        return ResponseEntity.ok(image);
+    public ResponseEntity<ImageChinh> postImage(@RequestBody ImageChinh imageChinh) {
+        service.add(imageChinh);
+        return ResponseEntity.ok(imageChinh);
     }
 
     @PutMapping
-    public ResponseEntity<Image> putImage(@RequestBody Image image) {
-        service.update(image);
-        return ResponseEntity.ok(image);
+    public ResponseEntity<ImageChinh> putImage(@RequestBody ImageChinh imageChinh) {
+        service.update(imageChinh);
+        return ResponseEntity.ok(imageChinh);
     }
 
     @DeleteMapping("/{id}")

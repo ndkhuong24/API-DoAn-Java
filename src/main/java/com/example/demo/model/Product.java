@@ -22,7 +22,7 @@ public class Product {
     private String code;
 
     @Column(name = "name")
-    private Integer name;
+    private String name;
 
     @Column(name = "style_id")
     private Integer style_id;
