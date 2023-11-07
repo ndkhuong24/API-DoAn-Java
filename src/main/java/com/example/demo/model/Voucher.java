@@ -29,6 +29,8 @@ public class Voucher {
     private Integer maximum_value;
     @Column(name = "condition")
     private Integer condition;
+    @Column(name = "quantity")
+    private Integer quantity;
     @Column(name = "start_date")
     private Date start_date;
     @Column(name = "end_date")
