@@ -48,4 +48,9 @@ public class ColorServiceImpl implements ColorService {
     public List<Color> getAllColorActive() {
         return repository.getAllColorActive();
     }
+
+    @Override
+    public Color findById(Integer id) {
+        return repository.findById(id).orElse(null);
+    }
 }

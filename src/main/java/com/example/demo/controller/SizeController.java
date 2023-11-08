@@ -24,6 +24,11 @@ public class SizeController {
         return ResponseEntity.ok(service.findByName(name));
     }
 
+    @GetMapping("/id/{id}")
+    public ResponseEntity<Size> findById(@PathVariable Integer id){
+        return ResponseEntity.ok(service.getById(id));
+    }
+
     @GetMapping("/getAll")
     public ResponseEntity<List<Size>> getAllSize() {
         return ResponseEntity.ok(service.getAll());

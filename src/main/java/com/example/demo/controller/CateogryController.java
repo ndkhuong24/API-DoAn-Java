@@ -28,6 +28,10 @@ public class CateogryController {
     public ResponseEntity<List<Category>> getAllActiveCategory() {
         return ResponseEntity.ok(service.getAllActiveCategory());
     }
+    @GetMapping("/id/{id}")
+    public ResponseEntity<Category> findById(@PathVariable Integer id){
+        return ResponseEntity.ok(service.findbyId(id));
+    }
 
     @GetMapping
     public ResponseEntity<List<Category>> getAllPage(@RequestParam(defaultValue = "1") int page) {
@@ -57,9 +61,9 @@ public class CateogryController {
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<List<Category>> getCategory(@PathVariable String id) {
-        List<Category> category = service.findByName(id);
+    @GetMapping("/{name}")
+    public ResponseEntity<List<Category>> getCategory(@PathVariable String name) {
+        List<Category> category = service.findByName(name);
         return ResponseEntity.ok(category);
     }
 }

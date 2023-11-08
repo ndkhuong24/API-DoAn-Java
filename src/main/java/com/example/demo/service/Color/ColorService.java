@@ -20,4 +20,6 @@ public interface ColorService {
     List<Color> findByName(String name);
 
     List<Color> getAllColorActive();
+
+    Color findById(Integer id);
 }

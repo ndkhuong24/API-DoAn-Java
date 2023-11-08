@@ -23,7 +23,10 @@ public class MaterialController {
     public ResponseEntity<List<Material>> searchByName(@PathVariable String name) {
         return ResponseEntity.ok(service.findByName(name));
     }
-
+    @GetMapping("/id/{id}")
+    public ResponseEntity<Material> findById(@PathVariable Integer id){
+        return ResponseEntity.ok(service.getById(id));
+    }
     @GetMapping("/getAll")
     public ResponseEntity<List<Material>> getAllMaterial() {
         return ResponseEntity.ok(service.getAll());

@@ -63,4 +63,9 @@ public class BrandController {
         List<Brand> brand = service.findByName(name);
         return ResponseEntity.ok(brand);
     }
+
+    @GetMapping("/id/{id}")
+    public ResponseEntity<Brand> findById(@PathVariable Integer id){
+        return ResponseEntity.ok(service.getById(id));
+    }
 }

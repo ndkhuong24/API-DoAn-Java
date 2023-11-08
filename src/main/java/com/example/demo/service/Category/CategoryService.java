@@ -20,4 +20,6 @@ public interface CategoryService {
     List<Category> findByName(String name);
 
     List<Category> getAllActiveCategory();
+
+    Category findbyId(Integer id);
 }

@@ -36,7 +36,7 @@ public class SoleServiceImpl implements SoleService {
 
     @Override
     public Sole getById(Integer id) {
-        return repository.getOne(id);
+        return repository.findById(id).orElse(null);
     }
 
     @Override

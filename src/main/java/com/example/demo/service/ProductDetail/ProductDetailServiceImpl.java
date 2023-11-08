@@ -19,6 +19,6 @@ public class ProductDetailServiceImpl implements ProductDetailService {
 
     @Override
     public ProductDetail getById(Integer id) {
-        return repository.getById(id);
+        return repository.findById(id).orElse(null);
     }
 }

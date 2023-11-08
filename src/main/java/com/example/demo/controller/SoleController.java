@@ -24,6 +24,11 @@ public class SoleController {
         return ResponseEntity.ok(service.findByName(name));
     }
 
+    @GetMapping("/id/{id}")
+    public ResponseEntity<Sole>findById(@PathVariable Integer id){
+        return ResponseEntity.ok(service.getById(id));
+    }
+
     @GetMapping("/getAll")
     public ResponseEntity<List<Sole>> getAllSole() {
         return ResponseEntity.ok(service.getAll());

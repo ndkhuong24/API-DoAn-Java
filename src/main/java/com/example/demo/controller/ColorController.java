@@ -35,6 +35,11 @@ public class ColorController {
         return ResponseEntity.ok(service.getAllColorActive());
     }
 
+    @GetMapping("/id/{id}")
+    public ResponseEntity<Color> findById(@PathVariable Integer id){
+        return ResponseEntity.ok(service.findById(id));
+    }
+
     @GetMapping
     public ResponseEntity<List<Color>> getAllPage(@RequestParam(defaultValue = "1") int page) {
         if (page < 1) page = 1;
