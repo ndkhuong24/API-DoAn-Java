@@ -7,6 +7,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class VoucherServiceImpl implements VoucherService {
     @Autowired
@@ -34,6 +36,12 @@ public class VoucherServiceImpl implements VoucherService {
 
     @Override
     public Voucher getById(Integer id) {
-        return repository.getOne(id);
+        return repository.findById(id).orElse(null);
     }
+
+    @Override
+    public List<Voucher> GetAll() {
+        return repository.findAll();
+    }
+
 }

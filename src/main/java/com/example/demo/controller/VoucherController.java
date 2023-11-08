@@ -19,6 +19,16 @@ public class VoucherController {
     private VoucherService service;
     Page<Voucher> voucherPage;
 
+    @GetMapping("/getAll")
+    public ResponseEntity<List<Voucher>> getAll(){
+        return ResponseEntity.ok(service.GetAll());
+    }
+
+    @GetMapping("/id/{id}")
+    public ResponseEntity<Voucher>findById(@PathVariable Integer id){
+        return ResponseEntity.ok(service.getById(id));
+    }
+
     @GetMapping
     public ResponseEntity<List<Voucher>> getAllPage(@RequestParam(defaultValue = "1") int page) {
         if (page < 1) page = 1;
