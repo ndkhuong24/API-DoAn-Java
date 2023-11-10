@@ -8,9 +8,18 @@ import java.util.List;
 
 public interface VoucherService {
     Page<Voucher> getAllPage(Pageable pageable);
+
     void add(Voucher voucher);
+
     void update(Voucher voucher);
+
     void delete(Integer id);
+
     Voucher getById(Integer id);
-    List<Voucher>GetAll();
+
+    List<Voucher> getAll();
+
+    List<Voucher> findByName(String name);
+
+    List<Voucher> getAllVoucherActive();
 }

@@ -19,13 +19,24 @@ public class VoucherController {
     private VoucherService service;
     Page<Voucher> voucherPage;
 
+    @GetMapping("/{name}")
+    public ResponseEntity<List<Voucher>> searchVoucher(@PathVariable String name){
+        List<Voucher> voucher = service.findByName(name);
+        return ResponseEntity.ok(voucher);
+    }
+
     @GetMapping("/getAll")
-    public ResponseEntity<List<Voucher>> getAll(){
-        return ResponseEntity.ok(service.GetAll());
+    public ResponseEntity<List<Voucher>> getAllVoucher(){
+        return ResponseEntity.ok(service.getAll());
+    }
+
+    @GetMapping("/getAll/active")
+    public ResponseEntity<List<Voucher>> getAllVoucherActive(){
+        return ResponseEntity.ok(service.getAllVoucherActive());
     }
 
     @GetMapping("/id/{id}")
-    public ResponseEntity<Voucher>findById(@PathVariable Integer id){
+    public ResponseEntity<Voucher> findById(@PathVariable Integer id){
         return ResponseEntity.ok(service.getById(id));
     }
 
