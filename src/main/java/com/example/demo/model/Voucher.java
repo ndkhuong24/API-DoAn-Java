@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Table(name = "voucher")
@@ -32,9 +33,9 @@ public class Voucher {
     @Column(name = "quantity")
     private Integer quantity;
     @Column(name = "start_date")
-    private Date start_date;
+    private LocalDateTime start_date;
     @Column(name = "end_date")
-    private Date end_date;
+    private LocalDateTime end_date;
     @Column(name = "status")
     private Integer status;
 
