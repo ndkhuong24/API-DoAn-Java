@@ -50,13 +50,13 @@ public class LoginController {
                 .collect(Collectors.toList());
         System.out.println(userDetails.getUsername());
         System.out.println(roles);
-        UserInfoResponse userInfoResponse=new UserInfoResponse(userDetails.getId(),userDetails.getUsername(),userDetails.getEmail(),roles);
-
+        String token=jwtUtils.generateTokenFromUsername(userDetails.getUsername());
+        UserInfoResponse userInfoResponse=new UserInfoResponse(userDetails.getId(),userDetails.getUsername(),userDetails.getEmail(),roles,token);
         return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE, jwtCookie.toString())
                 .body(new UserInfoResponse(userDetails.getId(),
                         userDetails.getUsername(),
                         userDetails.getEmail(),
-                        roles));
+                        roles,token));
 
     }
     @PostMapping("/logout")

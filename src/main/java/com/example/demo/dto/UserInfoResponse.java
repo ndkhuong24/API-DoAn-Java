@@ -7,15 +7,17 @@ public class UserInfoResponse {
     private String username;
     private String email;
     private List<String> roles;
+    private String token;
 
     public UserInfoResponse() {
     }
 
-    public UserInfoResponse(int id, String username, String email, List<String> roles) {
+    public UserInfoResponse(int id, String username, String email, List<String> roles, String token) {
         this.id = id;
         this.username = username;
         this.email = email;
         this.roles = roles;
+        this.token = token;
     }
 
     public int getId() {
@@ -48,5 +50,13 @@ public class UserInfoResponse {
 
     public void setRoles(List<String> roles) {
         this.roles = roles;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }
