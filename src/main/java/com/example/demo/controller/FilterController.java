@@ -21,14 +21,20 @@ public class FilterController {
     public List<Filter> filterProduct(@RequestParam(required = false) Double minPrice,
                                              @RequestParam(required = false) Double maxPrice,
                                              @RequestParam(required = false) List<String> colors,
-                                             @RequestParam(required = false)List<String>brands) {
+                                             @RequestParam(required = false)List<String>brands,
+                                            @RequestParam(required = false)List<String>sizes,
+                                            @RequestParam(required = false)List<String>soles,
+                                            @RequestParam(required = false)List<String>materials) {
         List<Filter> list = repos.filter();
 
         return list.stream()
                 .filter(product -> (minPrice == null || product.getPrice() >= minPrice) &&
                         (maxPrice == null || product.getPrice() <= maxPrice)&&
                         (colors == null || colors.isEmpty() || colors.contains(product.getColorName()))&&
-                        (brands==null || brands.isEmpty()||brands.contains(product.getBrandName()))
+                        (brands==null || brands.isEmpty()||brands.contains(product.getBrandName()))&&
+                        (sizes==null || sizes.isEmpty()||sizes.contains(product.getSizeName()))&&
+                        (soles==null || soles.isEmpty()||soles.contains(product.getSoleName()))&&
+                        (materials==null || materials.isEmpty()||materials.contains(product.getMaterialName()))
                 )
                 .collect(Collectors.toList());
 
