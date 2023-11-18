@@ -28,8 +28,8 @@ public class Voucher {
     private Float value;
     @Column(name = "maximum_value")
     private Integer maximum_value;
-    @Column(name = "condition")
-    private Integer condition;
+    @Column(name = "condition_value")
+    private Integer condition_value;
     @Column(name = "quantity")
     private Integer quantity;
     @Column(name = "start_date")
