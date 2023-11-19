@@ -12,6 +12,6 @@ public interface IVoucherRepository extends JpaRepository<Voucher, Integer> {
     @Query(value = "SELECT * FROM Voucher WHERE name LIKE %?1%", nativeQuery = true)
     List<Voucher> findByName(String name);
 
-    @Query(value = "SELECT  * FROM  Voucher WHERE [status]=1", nativeQuery = true)
-    List<Voucher> getAllVoucherActive();
+//    @Query(value = "SELECT  * FROM  Voucher WHERE [status]=1", nativeQuery = true)
+//    List<Voucher> getAllVoucherActive();
 }
