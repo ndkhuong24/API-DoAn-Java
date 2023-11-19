@@ -21,5 +21,5 @@ public interface VoucherService {
 
     List<Voucher> findByName(String name);
 
-    List<Voucher> getAllVoucherActive();
+//    List<Voucher> getAllVoucherActive();
 }

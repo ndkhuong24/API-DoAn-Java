@@ -49,8 +49,8 @@ public class VoucherServiceImpl implements VoucherService {
         return repository.findByName(name);
     }
 
-    @Override
-    public List<Voucher> getAllVoucherActive() {
-        return repository.getAllVoucherActive();
-    }
+//    @Override
+//    public List<Voucher> getAllVoucherActive() {
+//        return repository.getAllVoucherActive();
+//    }
 }

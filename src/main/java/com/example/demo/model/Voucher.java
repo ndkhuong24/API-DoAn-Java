@@ -36,7 +36,6 @@ public class Voucher {
     private LocalDateTime start_date;
     @Column(name = "end_date")
     private LocalDateTime end_date;
-    @Column(name = "status")
-    private Integer status;
-
+//    @Column(name = "status")
+//    private Integer status;
 }
