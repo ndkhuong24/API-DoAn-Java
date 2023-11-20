@@ -43,7 +43,7 @@ public class LoginController {
 
         UserDetailImpl userDetails = (UserDetailImpl) authentication.getPrincipal();
 
-        ResponseCookie jwtCookie = jwtUtils.generateJwtCookie(userDetails);
+       // ResponseCookie jwtCookie = jwtUtils.generateJwtCookie(userDetails);
 
         List<String> roles = userDetails.getAuthorities().stream()
                 .map(item -> item.getAuthority())
@@ -52,11 +52,12 @@ public class LoginController {
         System.out.println(roles);
         String token=jwtUtils.generateTokenFromUsername(userDetails.getUsername());
         UserInfoResponse userInfoResponse=new UserInfoResponse(userDetails.getId(),userDetails.getUsername(),userDetails.getEmail(),roles,token);
-        return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE, jwtCookie.toString())
-                .body(new UserInfoResponse(userDetails.getId(),
-                        userDetails.getUsername(),
-                        userDetails.getEmail(),
-                        roles,token));
+//        return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE, jwtCookie.toString())
+//                .body(new UserInfoResponse(userDetails.getId(),
+//                        userDetails.getUsername(),
+//                        userDetails.getEmail(),
+//                        roles,token));
+        return ResponseEntity.ok(userInfoResponse);
 
     }
     @PostMapping("/logout")

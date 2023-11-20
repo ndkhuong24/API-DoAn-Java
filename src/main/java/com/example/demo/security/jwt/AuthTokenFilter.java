@@ -43,7 +43,10 @@ try {
 filterChain.doFilter(request,response);
     }
     private String parseJwt(HttpServletRequest request) {
-        String jwt = jwtUtils.getJwtFromCookies(request);
-        return jwt;
+        String jwt = request.getHeader("Authorization");
+        if (jwt != null && jwt.startsWith("Bearer ")) {
+            return jwt.substring(7);
+        }
+        return null;
     }
 }
