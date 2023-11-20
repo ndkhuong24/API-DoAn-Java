@@ -27,34 +27,23 @@ public class LoginController {
     AuthenticationManager authenticationManager;
     @Autowired
     IUserRepository userRepository;
-    //@Autowired
-//    PasswordEncoder encoder;
     @Autowired
     JwtUtils jwtUtils;
 
     @PostMapping("/login")
     public ResponseEntity<?> authenticateUser(@RequestBody Login login) {
-        // String encodedPassword = encoder.encode(login.getPassword());
         Authentication authentication = authenticationManager
                 .authenticate(new UsernamePasswordAuthenticationToken(login.getUsername(), login.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
         UserDetailImpl userDetails = (UserDetailImpl) authentication.getPrincipal();
 
-        // ResponseCookie jwtCookie = jwtUtils.generateJwtCookie(userDetails);
-
         List<String> roles = userDetails.getAuthorities().stream()
                 .map(item -> item.getAuthority())
                 .collect(Collectors.toList());
         String token = jwtUtils.generateTokenFromUsername(userDetails.getUsername());
         UserInfoResponse userInfoResponse = new UserInfoResponse(userDetails.getId(), userDetails.getUsername(), userDetails.getEmail(), userDetails.getFullname(), roles, token);
-//        return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE, jwtCookie.toString())
-//                .body(new UserInfoResponse(userDetails.getId(),
-//                        userDetails.getUsername(),
-//                        userDetails.getEmail(),
-//                        roles,token));
         return ResponseEntity.ok(userInfoResponse);
-
     }
 
     @PostMapping("/logout")
