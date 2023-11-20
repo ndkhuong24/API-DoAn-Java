@@ -51,7 +51,7 @@ public class LoginController {
         System.out.println(userDetails.getUsername());
         System.out.println(roles);
         String token=jwtUtils.generateTokenFromUsername(userDetails.getUsername());
-        UserInfoResponse userInfoResponse=new UserInfoResponse(userDetails.getId(),userDetails.getUsername(),userDetails.getEmail(),roles,token);
+        UserInfoResponse userInfoResponse=new UserInfoResponse(userDetails.getId(),userDetails.getUsername(),userDetails.getEmail(),userDetails.getFullname(),roles,token);
 //        return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE, jwtCookie.toString())
 //                .body(new UserInfoResponse(userDetails.getId(),
 //                        userDetails.getUsername(),
