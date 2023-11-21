@@ -1,7 +1,6 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.Filter;
-import com.example.demo.model.ProductDetail;
 import com.example.demo.repository.IFilterRespository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -11,7 +10,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/api")
+//@RequestMapping("/api")
 @CrossOrigin("*")
 public class FilterController {
     @Autowired

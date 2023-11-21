@@ -15,11 +15,6 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.CorsConfigurationSource;
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-
-import java.util.Arrays;
 
 @Configuration
 @EnableWebSecurity
@@ -46,7 +41,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        // Sử dụng NoOpPasswordEncoder để không mã hóa mật khẩu
         return NoOpPasswordEncoder.getInstance();
     }
     @Override
@@ -55,26 +49,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .exceptionHandling().authenticationEntryPoint(authEntryPoinJwt).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests()
-//                .antMatchers("/api/User/**").hasRole("admin")
                 .antMatchers("/api/auth/**").permitAll()
+                .antMatchers("/filter").permitAll()
+                .antMatchers("/search/**").permitAll()
+                .antMatchers("/api/Color/getAll/active").permitAll()
+                .antMatchers("/api/Material/getAll/active").permitAll()
+                .antMatchers("/api/Size/getAll/active").permitAll()
+                .antMatchers("/api/Sole/getAll/active").permitAll()
+                .antMatchers("/api/Category/getAll/active").permitAll()
+                .antMatchers("/api/Brand/getAll/active").permitAll()
                 .antMatchers("/api/User/**").hasAnyAuthority("ADMIN","MANAGER")
-                //.antMatchers("/api/Category/**").hasAnyAuthority("ADMIN","MANAGER")
-                //.antMatchers("/api/Category/**").permitAll()
                 .anyRequest().authenticated();
-
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
     }
-//    @Bean
-//    public CorsConfigurationSource corsConfigurationSource() {
-//        CorsConfiguration configuration = new CorsConfiguration();
-//        configuration.setAllowedOriginPatterns(Arrays.asList("*"));
-//        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE"));
-//        configuration.setAllowedHeaders(Arrays.asList("*"));
-//        configuration.setAllowCredentials(true);
-//
-//        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-//        source.registerCorsConfiguration("/**", configuration);
-//
-//        return source;
-//    }
 }
