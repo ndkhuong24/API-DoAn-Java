@@ -47,6 +47,8 @@ public class Users {
     @Column(name = "status")
     private Integer stats;
 
-
-
+    public Users(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
 }
