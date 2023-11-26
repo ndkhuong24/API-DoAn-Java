@@ -1,8 +1,9 @@
 package com.example.demo.controller;
 
-import com.example.demo.dto.Login;
-import com.example.demo.dto.MessageResponse;
-import com.example.demo.dto.UserInfoResponse;
+import com.example.demo.dto.*;
+import com.example.demo.model.Roles;
+import com.example.demo.model.Users;
+import com.example.demo.repository.IRoleRepository;
 import com.example.demo.repository.IUserRepository;
 import com.example.demo.security.jwt.JwtUtils;
 import com.example.demo.security.service.UserDetailImpl;
@@ -16,7 +17,10 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @RestController
@@ -27,6 +31,8 @@ public class LoginController {
     AuthenticationManager authenticationManager;
     @Autowired
     IUserRepository userRepository;
+    @Autowired
+    IRoleRepository roleRepository;
     @Autowired
     JwtUtils jwtUtils;
 
@@ -51,5 +57,23 @@ public class LoginController {
         ResponseCookie cookie = jwtUtils.getCleanJwtCookie();
         return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE, cookie.toString())
                 .body(new MessageResponse("You've been signed out!"));
+    }
+    @PostMapping("/singup")
+    public ResponseEntity<?> registerUser( @Valid @RequestBody SingupRequest signUpRequest) {
+        if(userRepository.existsByUsername(signUpRequest.getUsername())){
+            return ResponseEntity.badRequest().body(new MessageResponse("Error: Username is already taken!"));
+        }
+        Users users= new Users(signUpRequest.getUsername(),signUpRequest.getPassword());
+        Set<String> strRole=signUpRequest.getRoles();
+        Set<Roles> roles= new HashSet<>();
+        if(strRole==null){
+            Roles userRole=roleRepository.findByName(ERole.CUSTOMER)
+                    .orElseThrow(()-> new RuntimeException("Error: Role is not found"));
+            roles.add(userRole);
+
+        }
+        users.setRoles(roles);
+        userRepository.save(users);
+        return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
     }
 }
