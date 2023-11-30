@@ -3,15 +3,17 @@ package com.example.demo.dto;
 import java.util.Set;
 
 public class SingupRequest {
+    private String fullname;
     private String email;
     private String password;
-    private Set<String> roles;
+    private String phone;
+    private Integer roles;
     private String username;
 
     public SingupRequest() {
     }
 
-    public SingupRequest(String email, String password, Set<String> roles, String username) {
+    public SingupRequest(String email, String password, Integer roles, String username) {
         this.email = email;
         this.password = password;
         this.roles = roles;
@@ -34,11 +36,11 @@ public class SingupRequest {
         this.password = password;
     }
 
-    public Set<String> getRoles() {
+    public Integer getRoles() {
         return roles;
     }
 
-    public void setRoles(Set<String> roles) {
+    public void setRoles(Integer roles) {
         this.roles = roles;
     }
 
@@ -48,5 +50,30 @@ public class SingupRequest {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public SingupRequest(String fullname, String email, String password, String phone, Integer roles, String username) {
+        this.fullname = fullname;
+        this.email = email;
+        this.password = password;
+        this.phone = phone;
+        this.roles = roles;
+        this.username = username;
+    }
+
+    public String getFullname() {
+        return fullname;
+    }
+
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }

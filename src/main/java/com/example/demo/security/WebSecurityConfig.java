@@ -59,6 +59,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/Category/getAll/active").permitAll()
                 .antMatchers("/api/Brand/getAll/active").permitAll()
                 .antMatchers("/api/Voucher/id/**").permitAll()
+                .antMatchers("/reset-password/**").permitAll()
                 .antMatchers("/api/User/**").hasAnyAuthority("ADMIN","MANAGER")
                 .anyRequest().authenticated();
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);

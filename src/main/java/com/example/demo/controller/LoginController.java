@@ -1,14 +1,17 @@
 package com.example.demo.controller;
 
 import com.example.demo.dto.*;
-import com.example.demo.model.Roles;
+import com.example.demo.model.Authority;
 import com.example.demo.model.Users;
+import com.example.demo.repository.IAuthorityRepository;
 import com.example.demo.repository.IRoleRepository;
 import com.example.demo.repository.IUserRepository;
 import com.example.demo.security.jwt.JwtUtils;
 import com.example.demo.security.service.UserDetailImpl;
+import com.example.demo.service.user.ForgotPassWordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseCookie;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -18,9 +21,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @RestController
@@ -33,6 +34,10 @@ public class LoginController {
     IUserRepository userRepository;
     @Autowired
     IRoleRepository roleRepository;
+    @Autowired
+    ForgotPassWordService forgotPassWordService;
+    @Autowired
+    IAuthorityRepository authorityRepository;
     @Autowired
     JwtUtils jwtUtils;
 
@@ -63,17 +68,25 @@ public class LoginController {
         if(userRepository.existsByUsername(signUpRequest.getUsername())){
             return ResponseEntity.badRequest().body(new MessageResponse("Error: Username is already taken!"));
         }
-        Users users= new Users(signUpRequest.getUsername(),signUpRequest.getPassword());
-        Set<String> strRole=signUpRequest.getRoles();
-        Set<Roles> roles= new HashSet<>();
-        if(strRole==null){
-            Roles userRole=roleRepository.findByName(ERole.CUSTOMER)
-                    .orElseThrow(()-> new RuntimeException("Error: Role is not found"));
-            roles.add(userRole);
-
-        }
-        users.setRoles(roles);
+        Users users= new Users(signUpRequest.getFullname(),signUpRequest.getEmail(), signUpRequest.getPhone(), signUpRequest.getUsername(),signUpRequest.getPassword());
         userRepository.save(users);
+        Authority authority=new Authority(users.getId(), 6);
+        authorityRepository.save(authority);
         return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
+    }
+    @PostMapping("/forgot-password")
+    public ResponseEntity<String> forgotPass(@RequestBody Users users){
+        String response = forgotPassWordService.forgotPass(users.getEmail());
+
+//        if(!response.startsWith("Invalid")){
+//            response= "http://localhost:8081/api/auth/reset-password?token=" + response;
+//        }
+//        return response;
+        return ResponseEntity.ok(response);
+    }
+
+    @PutMapping("/reset-password")
+    public ResponseEntity<String> resetPass(@RequestBody Users users) {
+       return  new ResponseEntity<>(forgotPassWordService.resetPass(users.getEmail(), users.getPassword()), HttpStatus.OK);
     }
 }

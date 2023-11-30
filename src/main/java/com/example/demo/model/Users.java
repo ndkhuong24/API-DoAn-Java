@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 
+import java.time.LocalDateTime;
 import java.util.*;
 
 @Entity
@@ -47,8 +48,31 @@ public class Users {
     @Column(name = "status")
     private Integer stats;
 
+    @Column(name = "token")
+    private String token;
+
+    @Column(name = "tokencreationdate")
+    private LocalDateTime tokenCreationDate;
+
     public Users(String username, String password) {
         this.username = username;
         this.password = password;
+    }
+
+    public Users(String fullname, String email, String phone, String username, String password) {
+        this.fullname = fullname;
+        this.email = email;
+        this.phone = phone;
+        this.username = username;
+        this.password = password;
+    }
+
+    public Users(String fullname, String email, String phone, String username, String password, Set<Roles> roles) {
+        this.fullname = fullname;
+        this.email = email;
+        this.phone = phone;
+        this.username = username;
+        this.password = password;
+        this.roles = roles;
     }
 }
