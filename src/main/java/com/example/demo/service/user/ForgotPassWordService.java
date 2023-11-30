@@ -3,35 +3,32 @@ package com.example.demo.service.user;
 import com.example.demo.model.Users;
 import com.example.demo.repository.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.io.UnsupportedEncodingException;
-import java.time.LocalDateTime;
-import java.util.Optional;
-import java.util.UUID;
-import java.time.Duration;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.stereotype.Service;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
+import java.io.UnsupportedEncodingException;
+import java.time.LocalDateTime;
+import java.util.Optional;
 
 @Service
 public class ForgotPassWordService {
-    private static final long EXPIRE_TOKEN=30;
+    private static final long EXPIRE_TOKEN = 30;
     @Autowired
     IUserRepository userRepository;
     @Autowired
     private JavaMailSender mailSender;
 
-    public String forgotPass(String email){
+    public String forgotPass(String email) {
         Users user = userRepository.findByEmail(email);
 
         if (user == null) {
             return "Invalid email id.";
         }
 
-      // user.setToken(generateToken());
+        // user.setToken(generateToken());
         user.setTokenCreationDate(LocalDateTime.now());
 
         user = userRepository.save(user);
@@ -46,8 +43,8 @@ public class ForgotPassWordService {
         return "An email with instructions has been sent to your email address.";
     }
 
-    public String resetPass(String email, String password){
-        Optional<Users> userOptional= Optional.ofNullable(userRepository.findByEmail(email));
+    public String resetPass(String email, String password) {
+        Optional<Users> userOptional = Optional.ofNullable(userRepository.findByEmail(email));
 //
 //        if(!userOptional.isPresent()){
 //            return "Invalid token";
@@ -69,7 +66,7 @@ public class ForgotPassWordService {
         return "Your password successfully updated.";
     }
 
-//    private String generateToken() {
+    //    private String generateToken() {
 //        StringBuilder token = new StringBuilder();
 //
 //        return token.append(UUID.randomUUID().toString())
@@ -93,10 +90,10 @@ public class ForgotPassWordService {
         String subject = "Reset Your Password";
         helper.setSubject(subject);
         helper.setText("""
-        <div>
-          <a href="http://127.0.0.1:5500/email-sent.html" target="_blank">click link to set password</a>
-        </div>
-        """.formatted(recipientEmail), true);
+                <div>
+                  <a href="http://127.0.0.1:5500/email-sent.html" target="_blank">click link to set password</a>
+                </div>
+                """.formatted(recipientEmail), true);
 
         mailSender.send(message);
     }
