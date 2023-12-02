@@ -1,6 +1,7 @@
 package com.example.demo.vnpay;
 
 import com.example.demo.model.Orders;
+import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
@@ -10,7 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class VNPayService {
-    public String createOrder(int total, Orders order, String urlReturn){
+    public String createOrder( Orders order, String urlReturn){
         String vnp_Version = "2.1.0";
         String vnp_Command = "pay";
         String vnp_TxnRef = Config.getRandomNumber(8);
@@ -73,7 +74,7 @@ public class VNPayService {
             }
         }
         String queryUrl = query.toString();
-        String vnp_SecureHash = Config.hmacSHA512(Config.vnp_HashSecret, hashData.toString());
+        String vnp_SecureHash = Config.hmacSHA512(Config.secretKey, hashData.toString());
         queryUrl += "&vnp_SecureHash=" + vnp_SecureHash;
         String paymentUrl = Config.vnp_PayUrl + "?" + queryUrl;
         return paymentUrl;
