@@ -31,7 +31,7 @@ public class Controller {
         vnp_Params.put("vnp_Version", Config.vnp_Version);
         vnp_Params.put("vnp_Command", Config.vnp_Command);
         vnp_Params.put("vnp_TmnCode", vnp_TmnCode);
-        vnp_Params.put("vnp_Amount", String.valueOf(new BigDecimal(10).multiply(new BigDecimal("100"))));
+        vnp_Params.put("vnp_Amount", String.valueOf(new BigDecimal(100000).multiply(new BigDecimal("100"))));
         vnp_Params.put("vnp_CurrCode", "VND");
         vnp_Params.put("vnp_BankCode", "NCB");
 

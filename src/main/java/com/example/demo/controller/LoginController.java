@@ -86,7 +86,7 @@ public class LoginController {
     }
 
     @PutMapping("/reset-password")
-    public ResponseEntity<String> resetPass(@RequestBody Users users) {
+    public ResponseEntity<?> resetPass(@RequestBody Users users) {
        return  new ResponseEntity<>(forgotPassWordService.resetPass(users.getEmail(), users.getPassword()), HttpStatus.OK);
     }
 }

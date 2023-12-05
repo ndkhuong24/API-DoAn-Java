@@ -1,5 +1,6 @@
 package com.example.demo.service.user;
 
+import com.example.demo.dto.ForgotPasswordDto;
 import com.example.demo.model.Users;
 import com.example.demo.repository.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +44,7 @@ public class ForgotPassWordService {
         return "An email with instructions has been sent to your email address.";
     }
 
-    public String resetPass(String email, String password) {
+    public ForgotPasswordDto resetPass(String email, String password) {
         Optional<Users> userOptional = Optional.ofNullable(userRepository.findByEmail(email));
 //
 //        if(!userOptional.isPresent()){
@@ -54,16 +55,14 @@ public class ForgotPassWordService {
 //            return "Token expired.";
 //
 //        }
-
         Users user = userOptional.get();
-
         user.setPassword(password);
         user.setToken(null);
         user.setTokenCreationDate(null);
-
         userRepository.save(user);
 
-        return "Your password successfully updated.";
+        ForgotPasswordDto forgotPasswordDto=new ForgotPasswordDto(user.getEmail(),user.getPassword());
+        return forgotPasswordDto;
     }
 
     //    private String generateToken() {
