@@ -18,7 +18,7 @@ import java.util.*;
 @CrossOrigin("*")
 public class Controller {
 @GetMapping("/create")
-    public ResponseEntity<?> createPayment( HttpServletRequest request) throws UnsupportedEncodingException {
+    public ResponseEntity<?> createPayment( @RequestParam(name = "amount") String amout, HttpServletRequest request) throws UnsupportedEncodingException {
 
         String orderType = "other";
 
@@ -31,7 +31,7 @@ public class Controller {
         vnp_Params.put("vnp_Version", Config.vnp_Version);
         vnp_Params.put("vnp_Command", Config.vnp_Command);
         vnp_Params.put("vnp_TmnCode", vnp_TmnCode);
-        vnp_Params.put("vnp_Amount", String.valueOf(new BigDecimal(100000).multiply(new BigDecimal("100"))));
+        vnp_Params.put("vnp_Amount", String.valueOf(new BigDecimal(amout).multiply(new BigDecimal("100"))));
         vnp_Params.put("vnp_CurrCode", "VND");
         vnp_Params.put("vnp_BankCode", "NCB");
 
