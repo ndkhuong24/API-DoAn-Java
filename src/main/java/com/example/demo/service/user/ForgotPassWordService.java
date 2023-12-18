@@ -25,10 +25,12 @@ public class ForgotPassWordService {
     public String forgotPass(String email) {
         Users user = userRepository.findByEmail(email);
 
-        if (user == null) {
-            return "Invalid email id.";
+        if (email.equals("")) {
+            return "please enter email";
         }
-
+        if(!email.equalsIgnoreCase(user.getEmail())){
+            return "Invalid email";
+        }
         // user.setToken(generateToken());
         user.setTokenCreationDate(LocalDateTime.now());
 
