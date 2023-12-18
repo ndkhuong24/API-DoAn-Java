@@ -1,7 +1,5 @@
 package com.example.demo.vnpay;
 
-import org.springframework.context.annotation.Configuration;
-
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 import javax.servlet.http.HttpServletRequest;
