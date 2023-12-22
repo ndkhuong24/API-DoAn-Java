@@ -53,4 +53,11 @@ public class SoleServiceImpl implements SoleService {
     public List<Sole> getAllSoleActive() {
         return repository.getAllSoleActive();
     }
+
+    @Override
+    public List<Sole> findByProduct(Integer id) {
+        return repository.findByProduct(id);
+    }
+
+
 }

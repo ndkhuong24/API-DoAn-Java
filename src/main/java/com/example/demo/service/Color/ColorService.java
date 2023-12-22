@@ -22,4 +22,6 @@ public interface ColorService {
     List<Color> getAllColorActive();
 
     Color findById(Integer id);
+
+    List<Color> findByProduct(Integer id);
 }

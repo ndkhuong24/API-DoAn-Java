@@ -53,4 +53,9 @@ public class ColorServiceImpl implements ColorService {
     public Color findById(Integer id) {
         return repository.findById(id).orElse(null);
     }
+
+    @Override
+    public List<Color> findByProduct(Integer id) {
+        return repository.findByProduct(id);
+    }
 }

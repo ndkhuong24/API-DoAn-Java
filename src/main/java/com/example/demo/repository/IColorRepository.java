@@ -14,4 +14,9 @@ public interface IColorRepository extends JpaRepository<Color, Integer> {
 
     @Query(value = "SELECT * FROM Color WHERE [status]=1", nativeQuery = true)
     List<Color> getAllColorActive();
+
+    @Query(value = "select Color.id,Color.name,Color.status from Color join ProductDetail on ProductDetail.color_id =Color.id \n" +
+            "join Product on Product.id = ProductDetail.product_id \n" +
+            "where Product.id=?1 and ProductDetail.status=1;",nativeQuery = true)
+    List<Color> findByProduct(Integer id);
 }

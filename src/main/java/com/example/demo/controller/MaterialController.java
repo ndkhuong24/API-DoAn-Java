@@ -65,4 +65,9 @@ public class MaterialController {
         service.delete(id);
         return ResponseEntity.ok().build();
     }
+
+    @GetMapping("/findByProduct/{id}")
+    public ResponseEntity<List<Material>> findByProduct(@PathVariable Integer id){
+        return ResponseEntity.ok(service.findByProduct(id));
+    }
 }

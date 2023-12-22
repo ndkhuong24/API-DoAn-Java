@@ -22,4 +22,6 @@ public interface SoleService {
     List<Sole> getAll();
 
     List<Sole> getAllSoleActive();
+
+    List<Sole> findByProduct(Integer id);
 }

@@ -67,4 +67,9 @@ public class ColorController {
         service.delete(id);
         return ResponseEntity.ok().build();
     }
+
+    @GetMapping("/findByProduct/{id}")
+    public ResponseEntity<List<Color>> findbyProduct(@PathVariable Integer id){
+        return ResponseEntity.ok(service.findByProduct(id));
+    }
 }

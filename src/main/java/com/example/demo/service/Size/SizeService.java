@@ -22,4 +22,6 @@ public interface SizeService {
     List<Size> findByName(String name);
 
     List<Size> getAllSizeActive();
+
+    List<Size> findByProduct(Integer id);
 }

@@ -14,4 +14,9 @@ public interface ISoleRepository extends JpaRepository<Sole,Integer> {
 
     @Query(value = "SELECT * FROM Sole WHERE [status]=1",nativeQuery = true)
     List<Sole> getAllSoleActive();
+
+    @Query(value="select Sole.id,Sole.name,Sole.status from Sole join ProductDetail on ProductDetail.sole_id =Sole.id \n" +
+            "join Product on Product.id = ProductDetail.product_id \n" +
+            "where Product.id=?1 and ProductDetail.status=1;",nativeQuery = true)
+    List<Sole> findByProduct(Integer id);
 }

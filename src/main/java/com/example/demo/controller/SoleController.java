@@ -66,4 +66,8 @@ public class SoleController {
         service.delete(id);
         return ResponseEntity.ok().build();
     }
+    @GetMapping("/findByProduct/{id}")
+    public ResponseEntity<List<Sole>> findByProduct(@PathVariable Integer id){
+        return ResponseEntity.ok(service.findByProduct(id));
+    }
 }

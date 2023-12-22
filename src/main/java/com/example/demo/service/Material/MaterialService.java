@@ -23,4 +23,6 @@ public interface MaterialService {
     List<Material>findByName(String name);
 
     List<Material> getAllMaterialActive();
+
+    List<Material> findByProduct(Integer id);
 }

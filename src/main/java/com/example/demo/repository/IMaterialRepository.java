@@ -14,4 +14,9 @@ public interface IMaterialRepository extends JpaRepository<Material, Integer> {
 
     @Query(value = "SELECT * FROM Material WHERE [status]=1", nativeQuery = true)
     List<Material> getAllMaterialActive();
+
+    @Query(value = "select Material.id,Material.name,Material.status from Material join ProductDetail on ProductDetail.material_id =Material.id \n" +
+            "join Product on Product.id = ProductDetail.product_id \n" +
+            "where Product.id=?1 and ProductDetail.status=1;",nativeQuery = true)
+    List<Material> finbyProduct(Integer id);
 }

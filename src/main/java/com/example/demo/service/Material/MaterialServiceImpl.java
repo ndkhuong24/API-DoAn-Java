@@ -52,4 +52,9 @@ public class MaterialServiceImpl implements MaterialService {
     public List<Material> getAllMaterialActive() {
         return repository.getAllMaterialActive();
     }
+
+    @Override
+    public List<Material> findByProduct(Integer id) {
+        return repository.finbyProduct(id);
+    }
 }

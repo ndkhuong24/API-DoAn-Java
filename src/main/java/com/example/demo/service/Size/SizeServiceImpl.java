@@ -53,4 +53,9 @@ public class SizeServiceImpl implements SizeService {
     public List<Size> getAllSizeActive() {
         return repository.getAllSizeActive();
     }
+
+    @Override
+    public List<Size> findByProduct(Integer id) {
+        return repository.findByProduct(id);
+    }
 }

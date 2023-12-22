@@ -67,4 +67,10 @@ public class SizeController {
         service.delete(id);
         return ResponseEntity.ok().build();
     }
+
+    @GetMapping("/findByProduct/{id}")
+    public ResponseEntity<List<Size>>findByProduct(@PathVariable Integer id){
+        return ResponseEntity.ok(service.findByProduct(id));
+    }
+
 }
