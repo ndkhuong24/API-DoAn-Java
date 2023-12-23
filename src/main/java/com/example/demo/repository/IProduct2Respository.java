@@ -1,6 +1,6 @@
 package com.example.demo.repository;
 
-import com.example.demo.model.Product2;
+import com.example.demo.model.Product3;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface IProduct2Respository extends JpaRepository<Product2,Integer> {
+public interface IProduct2Respository extends JpaRepository<Product3,Integer> {
     @Query(value = "SELECT p.id,  p.name AS product_name,(\n" +
             "        SELECT STRING_AGG(c.name, ', ')\n" +
             "        FROM ProductDetail AS pd\n" +
