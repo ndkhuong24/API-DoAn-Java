@@ -24,9 +24,15 @@ public class Product {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "style_id")
-    private Integer style_id;
-
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "style_id")
+    private Style style;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "brand_id")
+    private Brand brand;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "category_id")
+    private Category category;
     @Column(name = "description")
     private String description;
 
