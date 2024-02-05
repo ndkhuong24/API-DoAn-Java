@@ -15,9 +15,9 @@ public class ProductDTO {
     private Integer id;
     private String code;
     private String name;
-    private String style;
-    private String brand;
-    private String category;
+    private String style_id;
+    private String brand_id;
+    private String category_id;
     private String description;
     private Date createDate;
     private Integer status;

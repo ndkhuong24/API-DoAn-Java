@@ -12,4 +12,6 @@ import java.util.List;
 public interface ProductService {
     Page<ProductDTO> getAll(Pageable pageable);
     Product findById(Integer id);
+    ProductDTO Add(Product product);
+    ProductDTO Put(Product product);
 }

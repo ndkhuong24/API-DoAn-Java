@@ -33,9 +33,17 @@ public class ProductServiceImpl implements ProductService{
         productDTO.setName(product.getName());
         productDTO.setStatus(product.getStatus());
         productDTO.setCreateDate(product.getCreateDate());
-        productDTO.setStyle(product.getStyle().getName());
-        productDTO.setBrand(product.getBrand().getName());
-        productDTO.setCategory(product.getCategory().getName());
+        productDTO.setStyle_id(product.getStyle_id().getName());
+        productDTO.setBrand_id(product.getBrand_id().getName());
+        productDTO.setCategory_id(product.getCategory_id().getName());
         return productDTO;
+    }
+    public ProductDTO   Add(Product product){
+        Product product1=productRepository.save(product);
+        return convertProductDTO(product1);
+    }
+    public ProductDTO   Put(Product product){
+        Product product1=productRepository.save(product);
+        return convertProductDTO(product1);
     }
 }
